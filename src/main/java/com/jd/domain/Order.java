@@ -1,5 +1,7 @@
 package com.jd.domain;
 
+import com.jd.event.OrderStatus;
+
 import java.util.Date;
 
 /**
@@ -15,5 +17,7 @@ public class Order {
     public Order(String id, Date createDate) {
         this.id = id;
         this.createDate = createDate;
+        OrderEvent event = new OrderEvent();
+        event.notify(this, OrderStatus.ORDER_SAVE.getDesc());
     }
 }

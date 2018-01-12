@@ -1,5 +1,6 @@
 import com.jd.domain.Order;
-import com.jd.event.OrderEvent;
+import com.jd.domain.OrderEvent;
+import com.jd.event.OrderStatus;
 import org.junit.Test;
 import repository.OrderRepository;
 import repository.impl.OrderRepostitoryImpl;
@@ -29,11 +30,9 @@ public class OrderTest {
         OrderRepository orderRepository = new OrderRepostitoryImpl();
         UUID id = UUID.randomUUID();
         Order order = new Order(id.toString(), new Date());
-        OrderEvent event = new OrderEvent();
-        event.notify(order, "创建");
         orderRepository.saveOrder(order);
-        event.notify(order, "保存");
-        assertEquals("保存", event.getEventByOrderId(order.id));
+        OrderEvent event = new OrderEvent();
+        assertEquals("下订单", event.getEventByOrderId(order.id));
     }
 
 }

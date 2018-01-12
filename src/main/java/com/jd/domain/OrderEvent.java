@@ -1,4 +1,4 @@
-package com.jd.event;
+package com.jd.domain;
 
 import com.jd.domain.Order;
 
