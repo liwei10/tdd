@@ -18,6 +18,6 @@ public class Order {
         this.id = id;
         this.createDate = createDate;
         OrderEvent event = new OrderEvent();
-        event.notify(this, OrderStatus.ORDER_SAVE.getDesc());
+        event.notify(this, OrderStatus.ORDER_CREATE.getDesc());
     }
 }
